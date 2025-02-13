@@ -11,6 +11,7 @@
     <meta property="og:description" content="A beautiful Valentine's Day message for someone special.">
     <meta property="og:image" content="https://yourwebsite.com/valentine-image.jpg">
     <style>
+        /* Global Styles */
         body {
             font-family: 'Open Sans', sans-serif;
             text-align: center;
@@ -31,29 +32,39 @@
             background-size: cover;
             scroll-behavior: smooth;
         }
+
+        /* Heading */
         h1 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 4em;
+            font-size: 4.5em;
             margin-bottom: 20px;
             animation: fadeIn 2s ease-in-out;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
         }
+
+        /* Video Styling */
         video {
             width: 80%;
             max-width: 800px;
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
             display: none;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
+
         video:hover {
             transform: scale(1.02);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
         }
+
+        /* Audio (Hidden) */
         audio {
             display: none;
         }
+
+        /* Button Styling */
         .button {
             background-color: #d32f2f;
             color: white;
@@ -68,12 +79,35 @@
             animation: pulse 2s infinite;
             font-family: 'Poppins', sans-serif;
             letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .button:hover::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
         .button:hover {
             background-color: #b71c1c;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
         }
+
+        /* Hidden Message Styling */
         #hidden-message {
             display: none;
             font-size: 1.5em;
@@ -88,13 +122,17 @@
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             font-family: 'Poppins', sans-serif;
+            animation: fadeInMessage 1.5s ease-in-out;
         }
+
         .message-line {
             opacity: 0;
             transform: translateY(20px);
             animation: popOut 1s ease forwards;
             margin: 10px 0;
         }
+
+        /* Animations */
         @keyframes popOut {
             0% {
                 opacity: 0;
@@ -105,6 +143,7 @@
                 transform: translateY(0);
             }
         }
+
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -113,6 +152,18 @@
                 opacity: 1;
             }
         }
+
+        @keyframes fadeInMessage {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
@@ -121,19 +172,25 @@
                 transform: scale(1.1);
             }
         }
+
+        /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 10px;
         }
+
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #d32f2f;
             border-radius: 10px;
         }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5em;
+                font-size: 3em;
             }
             video {
                 width: 90%;
