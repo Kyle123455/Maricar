@@ -3,154 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Surprise</title>
+    <title>Valentine's Day with Click Me</title>
     <style>
-        /* CSS for styling */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #ffebee; /* Light pink background */
-            color: #d32f2f; /* Dark red text */
+            background-color: #ffebee;
+            color: #d32f2f;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            overflow: hidden;
+            height: 100vh;
         }
-
         h1 {
             font-size: 3em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
         video {
             width: 80%;
             max-width: 600px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none; /* Hide video initially */
         }
-
         audio {
             display: none; /* Hide the audio controls */
         }
-
-        /* Heart animation */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff4d4d;
-            transform: rotate(-45deg);
-            animation: float 5s infinite ease-in-out;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff4d4d;
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -10px;
-            left: 0;
-        }
-
-        .heart::after {
-            top: 0;
-            left: 10px;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(-45deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(-45deg);
-            }
-        }
-
-        /* Button styling */
         .button {
             background-color: #d32f2f;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 1.2em;
             cursor: pointer;
             margin-top: 20px;
             transition: background-color 0.3s ease;
         }
-
         .button:hover {
             background-color: #b71c1c;
+        }
+        #hidden-message {
+            display: none;
+            font-size: 1.5em;
+            color: #d32f2f;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Happy Valentine's Day! 💖</h1>
-    <p>Here's a little something to make your day special.</p>
+    <p>Click the button to see a special surprise.</p>
 
-    <!-- Background Music -->
-    <audio controls autoplay loop muted>
-        <source src="your-audio-file.mp4.mp4" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- Click Me Button -->
+    <button class="button" onclick="startPlayback()">Click Me!</button>
+
+    <!-- Hidden Message -->
+    <p id="hidden-message">You are loved! 💕</p>
 
     <!-- Video -->
-    <video controls>
+    <video id="valentine-video" loop>
         <source src="your-video-file.mp4.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Button for interaction -->
-    <button class="button" onclick="showMessage()">Click Me!</button>
-
-    <!-- Hidden message -->
-    <p id="hidden-message" style="display: none; font-size: 1.5em; color: #d32f2f; margin-top: 20px;">
-        You are loved! 💕
-    </p>
-
-    <!-- Heart animation -->
-    <div class="heart" style="top: 10%; left: 20%;"></div>
-    <div class="heart" style="top: 20%; left: 80%;"></div>
-    <div class="heart" style="top: 50%; left: 50%;"></div>
-    <div class="heart" style="top: 70%; left: 10%;"></div>
-    <div class="heart" style="top: 90%; left: 70%;"></div>
+    <!-- Audio -->
+    <audio id="valentine-audio">
+        <source src="palagi.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
-        // JavaScript for interactivity
-        function showMessage() {
-            const message = document.getElementById('hidden-message');
-            message.style.display = 'block';
+        // JavaScript to handle playback
+        const video = document.getElementById('valentine-video');
+        const audio = document.getElementById('valentine-audio');
+        const hiddenMessage = document.getElementById('hidden-message');
+
+        function startPlayback() {
+            // Show the video
+            video.style.display = 'block';
+
+            // Start video and audio playback
+            video.play();
+            audio.play();
+
+            // Show the hidden message
+            hiddenMessage.style.display = 'block';
+
+            // Hide the button after clicking
+            document.querySelector('.button').style.display = 'none';
         }
 
-        // Add more hearts dynamically
-        setInterval(() => {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.top = Math.random() * 100 + '%';
-            document.body.appendChild(heart);
+        // Sync audio with video
+        video.addEventListener('play', () => {
+            audio.currentTime = video.currentTime; // Sync audio with video
+        });
 
-            // Remove hearts after animation ends
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }, 1000);
+        // Stop both video and audio when audio ends
+        audio.addEventListener('ended', () => {
+            video.pause();
+            video.currentTime = 0; // Reset video to the beginning
+        });
     </script>
 </body>
 </html>
