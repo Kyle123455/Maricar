@@ -59,7 +59,7 @@
         .message-line {
             opacity: 0;
             transform: translateY(20px);
-            animation: popOut 0.5s ease forwards;
+            animation: popOut 1s ease forwards; /* Slower animation */
         }
         @keyframes popOut {
             0% {
@@ -104,8 +104,8 @@
         <div class="message-line">Happy Valentine's Day!💕</div>
     </div>
 
-    <!-- Video -->
-    <video id="valentine-video" loop>
+    <!-- Video with playsinline attribute -->
+    <video id="valentine-video" loop playsinline>
         <source src="your-video-file.mp4.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -142,7 +142,7 @@
                 setTimeout(() => {
                     line.style.opacity = 1;
                     line.style.transform = 'translateY(0)';
-                }, index * 500); // Delay each line by 500ms
+                }, index * 800); // Delay each line by 800ms for slower animation
             });
         }
 
