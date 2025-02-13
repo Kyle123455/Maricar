@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Surprise</title>
+    <style>
+        /* CSS for styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffebee; /* Light pink background */
+            color: #d32f2f; /* Dark red text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        video {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        audio {
+            display: none; /* Hide the audio controls */
+        }
+
+        /* Heart animation */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d4d;
+            transform: rotate(-45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d4d;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 10px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-45deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day! 💖</h1>
+    <p>Here's a little something to make your day special.</p>
+
+    <!-- Background Music -->
+    <audio controls autoplay loop muted>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Video -->
+    <video controls>
+        <source src="your-video-file.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <p>Wishing you lots of love and happiness!</p>
+
+    <!-- Heart animation -->
+    <div class="heart" style="top: 10%; left: 20%;"></div>
+    <div class="heart" style="top: 20%; left: 80%;"></div>
+    <div class="heart" style="top: 50%; left: 50%;"></div>
+    <div class="heart" style="top: 70%; left: 10%;"></div>
+    <div class="heart" style="top: 90%; left: 70%;"></div>
+</body>
+</html>
