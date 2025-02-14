@@ -18,12 +18,12 @@
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
             color: #d32f2f;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
             position: relative;
             background-attachment: fixed;
@@ -37,17 +37,17 @@
         h1 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 4.5em;
+            font-size: 3em; /* Reduced size for better fit */
             margin-bottom: 20px;
             animation: fadeIn 2s ease-in-out;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         /* Video Styling */
         video {
-            width: 80%;
-            max-width: 800px;
+            width: 90%; /* Adjusted for better fit */
+            max-width: 600px; /* Reduced max-width */
             border-radius: 15px;
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
             display: none;
@@ -110,15 +110,15 @@
         /* Hidden Message Styling */
         #hidden-message {
             display: none;
-            font-size: 1.5em;
+            font-size: 1.2em; /* Reduced size for better fit */
             color: #d32f2f;
             margin-top: 20px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            padding: 20px 30px;
-            max-width: 600px;
+            padding: 15px 20px; /* Reduced padding */
+            max-width: 500px; /* Reduced max-width */
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             font-family: 'Poppins', sans-serif;
@@ -190,14 +190,16 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 3em;
+                font-size: 2.5em; /* Further reduced for mobile */
             }
             video {
-                width: 90%;
+                width: 95%; /* Adjusted for mobile */
+                max-width: 100%; /* Full width on small screens */
             }
             #hidden-message {
-                font-size: 1.2em;
-                padding: 15px 20px;
+                font-size: 1em; /* Smaller font for mobile */
+                padding: 10px 15px; /* Reduced padding for mobile */
+                max-width: 90%; /* Full width on small screens */
             }
         }
     </style>
